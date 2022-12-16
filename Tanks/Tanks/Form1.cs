@@ -267,13 +267,13 @@ namespace Tanks
         {
 
             Invalidate();
-            if (Base.isDestroyed == true || player.isDead)
+            if (Base.isDestroyed == true || player.isDead) // проверяем, можно ли продолжать игру
             {
                 Start();
                 return;
             }
             player.Mode = animationMode;
-            if (isPressedKey && player.isValidMove(player.coordinates))
+            if (isPressedKey && player.isValidMove(player.coordinates)) // фиксируем нажатую пользователем кнопку для движения танка
             {
                 switch (animationMode)
                 {
@@ -295,7 +295,7 @@ namespace Tanks
                         break;
                 }
             }
-            for (int i = 0; i < tanks.Count; i++)
+            for (int i = 0; i < tanks.Count; i++) // проверка столкновений танков с внутриигровыми объектами
             {
                 int mode = 0;
                 if (tanks[i] == pictureBox52)
@@ -375,14 +375,14 @@ namespace Tanks
                     }
                 }
             }
-            foreach (Tank t in all)
+            foreach (Tank t in all) // если пришло время для возрождения, алгоритм находит нужное место для появления танка
             {
                 if (t is ComputerTank && t.isDead)
                     if (((ComputerTank)t).restoreTime > 399)
                         ((ComputerTank)t).restoreCoord = GetEmptySpace(tanks);
             }
 
-            for (int i = 0; i < tanks.Count; i++)
+            for (int i = 0; i < tanks.Count; i++) // регистрация столкновения между танками
             {
                 Rectangle comparison = new Rectangle();
                 for (int j = 0; j < tanks.Count; j++)
@@ -412,7 +412,7 @@ namespace Tanks
                     break;
                 }
             }
-            foreach (Tank item in all)
+            foreach (Tank item in all) // регистрация попадания снаряда 
             {
                 if (item.bullet.coordinates != null && item.bullet.coordinates.Item1 > 0)
                 {

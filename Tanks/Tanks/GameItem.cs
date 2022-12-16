@@ -10,8 +10,8 @@ namespace Tanks
 {
     abstract class GameItem // общий класс для игровых объектов
     {
-        public abstract void DrawItem(Graphics item, PictureBox pic);
-        public int width { get; set; }
-        public int height { get; set; }
+        public abstract void DrawItem(Graphics item, PictureBox pic); // отрисовка объекта
+        public int width { get; set; } // ширина объекта
+        public int height { get; set; } // высота объекта
     }
 }

@@ -32,7 +32,7 @@ namespace Tanks
         string WallsControls = "WallsControls.json"; // файл для сериализации
         string BaseControl = "BaseControl.json"; // файл для сериализации
         string PlayerTankInfo = "PlayerTankInfo.json"; // файл для сериализации
-        string EnemyTanksInfo = "EnemyTankInfo.json"; // файл для сериализации
+        string EnemyTanksInfo = "EnemyTankInfo.json"; // файл для сериализации        
 
         public Form1() // инициализация компанентов формы
         {
@@ -69,7 +69,7 @@ namespace Tanks
 
             this.KeyDown += new KeyEventHandler(keyboard);
             this.KeyUp += new KeyEventHandler(freeKey);
-            timer1.Interval = 1;
+            timer1.Interval = 16;
             timer1.Tick += new EventHandler(update);
             timer1.Start();
 
@@ -265,7 +265,6 @@ namespace Tanks
         }
         private void update(object sender, EventArgs e) // обновление формы (анимация объектов)
         {
-
             Invalidate();
             if (Base.isDestroyed == true || player.isDead) // проверяем, можно ли продолжать игру
             {
@@ -436,6 +435,7 @@ namespace Tanks
                         if (wall.Bounds.IntersectsWith(new Rectangle(new Point(item.bullet.coordinates.Item1, item.bullet.coordinates.Item2), new Size(23, 23))))
                         {
                             item.bullet.Destroy();
+                            break;
                         }
                     }
                     foreach (PictureBox b in bases)

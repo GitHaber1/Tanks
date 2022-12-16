@@ -494,7 +494,7 @@ namespace Tanks
                     break;
                 case "F":
                     if (player.bullet.coordinates.Item1 < 0)
-                        player.bullet.Spawn(player.GetDirection(), player.GetFirePosition(pictureBox51));
+                        player.bullet.Spawn(player.GetDirection(), player.GetFirePosition(pictureBox51.Location, pictureBox51.Width));
                     break;
             }
         }

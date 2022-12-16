@@ -142,7 +142,7 @@ namespace Tanks
             {
                 if (bullet.reload > 100)
                 {
-                    bullet.Spawn(GetDirection(), GetFirePosition(pic));
+                    bullet.Spawn(GetDirection(), GetFirePosition(pic.Location, pic.Width));
                     bullet.reload = 0;
                 }
                 else

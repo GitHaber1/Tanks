@@ -69,4 +69,3 @@ C:\Users\Даниил\Documents\GitHub\Tanks\Tanks\Tanks\bin\Debug\Xamarin.Forms
 C:\Users\Даниил\Documents\GitHub\Tanks\Tanks\Tanks\bin\Debug\Xamarin.Forms.Xaml.pdb
 C:\Users\Даниил\Documents\GitHub\Tanks\Tanks\Tanks\bin\Debug\Xamarin.Forms.Xaml.xml
 C:\Users\Даниил\Documents\GitHub\Tanks\Tanks\Tanks\obj\Debug\Tanks.csproj.CopyComplete
-C:\Users\Даниил\Documents\GitHub\Tanks\Tanks\Tanks\obj\Debug\Tanks.csproj.AssemblyReference.cache

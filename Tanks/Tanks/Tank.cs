@@ -8,7 +8,7 @@ using System.Windows.Forms;
 
 namespace Tanks
 {
-    class Tank : GameItem // родительский класс для танков 
+    public class Tank : GameItem // родительский класс для танков 
     {
         public Rectangle NextRadius { get; set; } // следующее положение танка
         public Rectangle Radius { get; set; } // положение танка
@@ -26,20 +26,20 @@ namespace Tanks
             width = 60;
             height = 60;
         }
-        public Tuple<int, int> GetFirePosition(PictureBox pic) // определяет координаты, в которых появится снаряд при выстреле
-        {
+        public Tuple<int, int> GetFirePosition(Point pic, int Width) // определяет координаты, в которых появится снаряд при выстреле
+        {            
             Tuple<int, int> dir;
             if (Mode == 1)
-                dir = new Tuple<int, int>(pic.Location.X + pic.Width / 2 + 40, pic.Location.Y + pic.Width / 2 - 10);
+                dir = new Tuple<int, int>(pic.X + Width / 2 + 40, pic.Y + Width / 2 - 10);
             else if (Mode == 2)
-                dir = new Tuple<int, int>(pic.Location.X - pic.Width / 2, pic.Location.Y + pic.Width / 2 - 10);
+                dir = new Tuple<int, int>(pic.X - Width / 2, pic.Y + Width / 2 - 10);
             else if (Mode == 3)
-                dir = new Tuple<int, int>(pic.Location.X + pic.Width / 2 - 10, pic.Location.Y - pic.Width / 2);
+                dir = new Tuple<int, int>(pic.X + Width / 2 - 10, pic.Y - Width / 2);
             else
-                dir = new Tuple<int, int>(pic.Location.X + pic.Width / 2 - 10, pic.Location.Y + pic.Width / 2 + 40);
+                dir = new Tuple<int, int>(pic.X + Width / 2 - 10, pic.Y + Width / 2 + 40);
             return dir;
         }
-        public Tuple<int, int> GetDirection() // определяет направление движения пули
+        public Tuple<int, int> GetDirection() // определяет направление движения снаряда
         {
             Tuple<int, int> dir;
             if (Mode == 1)

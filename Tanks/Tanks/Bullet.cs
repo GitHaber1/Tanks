@@ -8,7 +8,7 @@ using System.Windows.Forms;
 
 namespace Tanks
 {
-    class Bullet : GameItem // класс для снаряда танка
+    public class Bullet : GameItem // класс для снаряда танка
     {
         public int reload; // переменная, отслеживающая перезарядку
         public Tuple<int, int> coordinates { get; set; } // координаты снаряда

@@ -8,9 +8,9 @@ using System.Windows.Forms;
 
 namespace Tanks
 {
-    class PlayerTank : Tank // класс для танка игрока
+    public class PlayerTank : Tank // класс для танка игрока
     {
-        public bool isNoBarrier(List<Tank> tanks) // проверяет, есть ли преграда перед танком
+        public bool isNoBarrier(List<Tank> tanks) // проверяет, есть ли вражеский танк перед танком игрока
         {
             for (int i = 1; i < tanks.Count; i++)
             {

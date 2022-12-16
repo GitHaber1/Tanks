@@ -8,15 +8,14 @@ using System.Windows.Forms;
 
 namespace Tanks
 {
-    class ComputerTank : Tank
+    class ComputerTank : Tank // класс для вражеских танков
     {
-        private int delta = 0;
-        public int TimeToRotate { get; set; }
-        public int restoreTime { get; set; }
-        public bool isStoped { get; set; }
-        public Point restoreCoord { get; set; }
+        private int delta = 0; // отслеживает время, после которого надо сменить направление движения        
+        public int restoreTime { get; set; } // время возраждения танка
+        public bool isStoped { get; set; } // отслеживает, остановлен ли танк
+        public Point restoreCoord { get; set; } // координаты для появления танка
        
-        private void Rotate()
+        private void Rotate() // поворот танка в определнный промежуток времени
         {
             Random rand = new Random();
             if (delta > 300)
@@ -25,7 +24,7 @@ namespace Tanks
                 delta = 0;
             }
         }
-        public void Movement(PictureBox pic, Control.ControlCollection forms)
+        public void Movement(PictureBox pic, Control.ControlCollection forms) // алгоритм движения танков при их столкновении
         {
             int Right = 10000;
             int Left = 10000;
@@ -104,7 +103,7 @@ namespace Tanks
             }
             isStoped = false;
         }
-        public void Movement(PictureBox pic)
+        public void Movement(PictureBox pic) // алгоритм движения танков
         {
             if (!isStoped && !isDead)
             {
@@ -119,7 +118,7 @@ namespace Tanks
                     pic.Location = new Point(pic.Location.X, pic.Location.Y + Speed);
             }
         }
-        private void Restore()
+        private void Restore() // возраждения танков
         {
             if (!isDead)
             {
@@ -135,7 +134,7 @@ namespace Tanks
                 }
             }
         }
-        public override void DrawItem(Graphics item, PictureBox pic)
+        public override void DrawItem(Graphics item, PictureBox pic) // отрисовка танка, если он живой
         {
             delta++;
             Rotate();

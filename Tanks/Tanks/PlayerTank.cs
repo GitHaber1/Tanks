@@ -8,9 +8,9 @@ using System.Windows.Forms;
 
 namespace Tanks
 {
-    class PlayerTank : Tank
+    class PlayerTank : Tank // класс для танка игрока
     {
-        public bool isNoBarrier(List<Tank> tanks)
+        public bool isNoBarrier(List<Tank> tanks) // проверяет, есть ли преграда перед танком
         {
             for (int i = 1; i < tanks.Count; i++)
             {
@@ -19,7 +19,7 @@ namespace Tanks
             }
             return true;
         }
-        public override void DrawItem(Graphics item, PictureBox pic)
+        public override void DrawItem(Graphics item, PictureBox pic) // отрисовка танка
         {
             Bitmap img = new Bitmap("playerTankUp.png");
             if (Mode == 1)

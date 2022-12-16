@@ -12,29 +12,29 @@ using System.Text.Json;
 
 namespace Tanks
 {
-    public partial class Form1 : Form
+    public partial class Form1 : Form // класс, в котором содержится логика для формы с игрой 
     {
-        List<Point> startPos = new List<Point>();
-        Graphics gr;
-        int animationMode = 3;
-        bool isPressedKey = false;
-        List<PictureBox> tanks = new List<PictureBox>();
-        List<PictureBox> bricks = new List<PictureBox>();
-        List<PictureBox> walls = new List<PictureBox>();
-        List<PictureBox> bases = new List<PictureBox>();
-        Bricks brick = new Bricks();
-        BlockWall wall = new BlockWall();
-        Base Base = new Base();
-        PlayerTank player = new PlayerTank();
-        List<Tank> all = new List<Tank>();
-        string TanksControls = "TanksControls.json";
-        string BricksContorls = "BricksControls.json";
-        string WallsControls = "WallsControls.json";
-        string BaseControl = "BaseControl.json";
-        string PlayerTankInfo = "PlayerTankInfo.json";
-        string EnemyTanksInfo = "EnemyTankInfo.json";
+        List<Point> startPos = new List<Point>(); // стартовые позиции танков
+        Graphics gr; // средство для отрисовки
+        int animationMode = 3; // отслеживает направление танка
+        bool isPressedKey = false; // отслеживает, нажата ли клавиша
+        List<PictureBox> tanks = new List<PictureBox>(); // список с информацией о танках на форме
+        List<PictureBox> bricks = new List<PictureBox>(); // список с информацией о блоках на форме
+        List<PictureBox> walls = new List<PictureBox>();// список с информацией о блоках на форме
+        List<PictureBox> bases = new List<PictureBox>();// список с информацией о блоках на форме
+        Bricks brick = new Bricks(); // элемент для добавления блоков
+        BlockWall wall = new BlockWall(); // элемент для добавления блоков
+        Base Base = new Base(); // элемент для добавления блоков
+        PlayerTank player = new PlayerTank(); // танк игрока
+        List<Tank> all = new List<Tank>(); // список танков
+        string TanksControls = "TanksControls.json"; // файл для сериализации
+        string BricksContorls = "BricksControls.json"; // файл для сериализации
+        string WallsControls = "WallsControls.json"; // файл для сериализации
+        string BaseControl = "BaseControl.json"; // файл для сериализации
+        string PlayerTankInfo = "PlayerTankInfo.json"; // файл для сериализации
+        string EnemyTanksInfo = "EnemyTankInfo.json"; // файл для сериализации
 
-        public Form1()
+        public Form1() // инициализация компанентов формы
         {
             InitializeComponent();
 
@@ -45,7 +45,7 @@ namespace Tanks
 
             BackgroundImage = (Bitmap)Image.FromFile(Path.Combine(Application.StartupPath + "\\background.jpg"));
             gr = this.CreateGraphics();
-            if (File.ReadAllText(TanksControls).Length > 0)
+            if (File.ReadAllText(TanksControls).Length > 0) // условие, которое проверяет, надо ли загружать данные
                 ReDraw();
             else
             {
@@ -78,7 +78,7 @@ namespace Tanks
             this.SetStyle(ControlStyles.OptimizedDoubleBuffer | ControlStyles.AllPaintingInWmPaint, true); // для быстрой отрисовки объектов
 
         }
-        private void ReDraw()
+        private void ReDraw() // зарузка последней сохраненной игры
         {
             string json1 = File.ReadAllText(TanksControls);
             string json2 = File.ReadAllText(BricksContorls);
@@ -149,7 +149,7 @@ namespace Tanks
             wallscon = null;
             basecon = null;
         }
-        private void Start()
+        private void Start() // функция для перезапуска при поражении
         {
             Base.isDestroyed = false;
             pictureBox51.Location = startPos[0];
@@ -180,7 +180,7 @@ namespace Tanks
             PlayerTankAnimation();
             EnemyTankAnimation();
         }
-        private void Form1_FormClosing(object sender, FormClosingEventArgs e)
+        private void Form1_FormClosing(object sender, FormClosingEventArgs e) // сохранение игры при закрытии формы
         {
             List<Point> adder = new List<Point>();
             foreach (PictureBox pic in tanks)
@@ -221,7 +221,7 @@ namespace Tanks
             File.WriteAllText(PlayerTankInfo, json5);
             File.WriteAllText(EnemyTanksInfo, json6);
         }
-        private Point GetEmptySpace(List<PictureBox> tanks)
+        private Point GetEmptySpace(List<PictureBox> tanks) // алгоритм для корректного возраждения вражеского танка
         {
             Point tup = new Point(1, 1);
             bool flag = true;
@@ -242,11 +242,11 @@ namespace Tanks
             }
             return tup;
         }
-        private void freeKey(object sender, KeyEventArgs e)
+        private void freeKey(object sender, KeyEventArgs e) // функция, которая отслеживает, нажата ли клавиша
         {
             isPressedKey = false;
         }
-        private void EnemyTankMovement()
+        private void EnemyTankMovement() // алгоритм движения вражеских танков
         {
             if (((ComputerTank)all[1]).isStoped && !((ComputerTank)all[1]).isDead)
                 ((ComputerTank)all[1]).Movement(pictureBox52, this.Controls);
@@ -263,7 +263,7 @@ namespace Tanks
             else if (!all[3].isDead)
                 ((ComputerTank)all[3]).Movement(pictureBox54);
         }
-        private void update(object sender, EventArgs e)
+        private void update(object sender, EventArgs e) // обновление формы (анимация объектов)
         {
 
             Invalidate();
@@ -472,7 +472,7 @@ namespace Tanks
             PlayerTankAnimation();
         }
 
-        private void keyboard(object sender, KeyEventArgs e)
+        private void keyboard(object sender, KeyEventArgs e) // логика для клавиш
         {
             switch (e.KeyCode.ToString())
             {
@@ -498,18 +498,18 @@ namespace Tanks
                     break;
             }
         }
-        public void EnemyTankAnimation()
+        public void EnemyTankAnimation() // отрисовка вражеских танков
         {
             ((ComputerTank)all[1]).DrawItem(gr, pictureBox52);
             ((ComputerTank)all[2]).DrawItem(gr, pictureBox53);
             ((ComputerTank)all[3]).DrawItem(gr, pictureBox54);
         }
-        public void PlayerTankAnimation()
+        public void PlayerTankAnimation() // отрисовка игрока
         {
             player.DrawItem(gr, pictureBox51);
         }
 
-        public void DrawMap()
+        public void DrawMap() // отрисовка карты
         {
             brick = new Bricks();
             wall = new BlockWall();

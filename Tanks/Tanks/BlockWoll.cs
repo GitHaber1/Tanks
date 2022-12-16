@@ -8,14 +8,14 @@ using System.Windows.Forms;
 
 namespace Tanks
 {
-    class BlockWall : GameItem
+    class BlockWall : GameItem // класс для неразрушаемой стены
     {
-        public BlockWall()
+        public BlockWall() // конструктор
         {
             width = 64;
             height = 64;
         }
-        public override void DrawItem(Graphics item, PictureBox pic)
+        public override void DrawItem(Graphics item, PictureBox pic) // отрисовка
         {
             Bitmap img = new Bitmap("wall.png");
             pic.Size = new Size(width, height);

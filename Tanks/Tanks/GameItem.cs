@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace Tanks
 {
-    abstract class GameItem
+    abstract class GameItem // общий класс для игровых объектов
     {
         public abstract void DrawItem(Graphics item, PictureBox pic);
         public int width { get; set; }

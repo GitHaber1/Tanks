@@ -88,7 +88,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Base.cs" />
-    <Compile Include="BlockWoll.cs" />
+    <Compile Include="BlockWall.cs" />
     <Compile Include="Bricks.cs" />
     <Compile Include="Bullet.cs" />
     <Compile Include="ComputerTank.cs" />

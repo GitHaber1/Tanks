@@ -75,8 +75,7 @@ namespace Tanks
 
             PlayerTankAnimation();
             EnemyTankAnimation();
-            this.SetStyle(ControlStyles.OptimizedDoubleBuffer | ControlStyles.AllPaintingInWmPaint, true); // для быстрой отрисовки объектов
-
+            this.SetStyle(ControlStyles.OptimizedDoubleBuffer | ControlStyles.AllPaintingInWmPaint, true); // для быстрой отрисовки объектов            
         }
         private void ReDraw() // зарузка последней сохраненной игры
         {
